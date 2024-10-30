@@ -22,6 +22,12 @@ package fr.insa.dhee.m3.projet.moveinsa.DataBase;
  *
  * @author gwend
  */
-public class OfreeMobilite {
+public class OffreMobilite {
+    
+    private int nbplace;
+    
+    public OffreMobilite(int nbplace){
+        this.nbplace = nbplace;
+    }
     
 }
