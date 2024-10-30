@@ -22,6 +22,6 @@ package fr.insa.dhee.m3.projet.moveinsa.DataBase;
  *
  * @author gwend
  */
-public class Pays {
-    
+public enum Pays {
+    FRANCE;
 }
