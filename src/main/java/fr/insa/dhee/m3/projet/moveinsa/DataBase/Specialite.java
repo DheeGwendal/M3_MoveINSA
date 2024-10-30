@@ -24,4 +24,13 @@ package fr.insa.dhee.m3.projet.moveinsa.DataBase;
  */
 public class Specialite {
     
+    private String spe;
+    private int classement;
+    
+    public Specialite(String spe, int classement){
+        this.classement = classement;
+        this.spe = spe;
+        
+    }
+    
 }

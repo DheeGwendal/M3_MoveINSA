@@ -34,22 +34,17 @@ public class Etudiant {
     private int ine;
     private String nom;
     private String prenom;
-    private String classe; // ex: GM, GE
-    private int annee; // ex : 2e annee, 3e pour GE2, GM3...
-    private int score;
-    
+   
     /**
      * création d'un nouvel Etudiant en mémoire, non existant dans la Base de
      * donnée.
      *
      * @param nom
      * @param prenom
-     * @param classe
-     * @param annee
-     * @param score
      */
-    public Etudiant(String nom, String prenom, String classe, int annee, int score) {
-        this(-1,nom, prenom, classe, annee, score);
+    
+    public Etudiant(String nom, String prenom) {
+        this(-1,nom, prenom);
     }
 
     /**
@@ -58,22 +53,16 @@ public class Etudiant {
      * @param ine
      * @param nom
      * @param prenom
-     * @param classe
-     * @param annee
-     * @param score
      */
-    public Etudiant(int ine, String nom, String prenom, String classe, int annee, int score) {
+    public Etudiant(int ine, String nom, String prenom) {
         this.ine = ine;
         this.nom = nom;
         this.prenom = prenom;
-        this.classe = classe;
-        this.annee = annee;
-        this.score = score;
     }
 
     @Override
     public String toString() {
-        return "Etudiant{" + "ine =" + this.getIne() + " ; nom =" + this.getNom() + "; prenom =" + this.getPrenom() + " ; classe =" + this.getClasse() + "; annee =" + this.getAnnee() + "; score = " + this.getScore() +  "}";
+        return "Etudiant{" + "ine =" + this.getIne() + " ; nom =" + this.getNom() + "; prenom =" + this.getPrenom() +  "}";
     }
 
     /**
@@ -93,13 +82,10 @@ public class Etudiant {
             throw new EntiteDejaSauvegardee();
         }
         try (PreparedStatement insert = con.prepareStatement(
-                "insert into etudiant (nom, prenom, classe, score) values (?,?,?,?)",
+                "insert into etudiant (nom, prenom) values (?,?)",
                 PreparedStatement.RETURN_GENERATED_KEYS)) {
             insert.setString(1, this.getNom());
             insert.setString(2, this.getPrenom());
-            insert.setString(3, this.getClasse());
-            //insert.setInt(1, this.getAnnee());
-            insert.setInt(1, this.getScore());
             insert.executeUpdate();
             try (ResultSet rid = insert.getGeneratedKeys()) {
                 rid.next();
@@ -111,16 +97,16 @@ public class Etudiant {
 
     public static List<Etudiant> tousLesEtudiants(Connection con) throws SQLException {
         try (PreparedStatement pst = con.prepareStatement(
-                "select ine,nom, prenom, classe, anee, score from partenaire")) {
+                "select ine,nom, prenom")) {
             ResultSet rs = pst.executeQuery();
             List<Etudiant> res = new ArrayList<>();
             while (rs.next()) {
-                res.add(new Etudiant(rs.getInt(1), rs.getString(1), rs.getString(2), rs.getString(3), rs.getInt(2), rs.getString(3)));
+                res.add(new Etudiant(rs.getInt(1), rs.getString(1), rs.getString(2)));
             }
             return res;
         }
     }
-
+/**
     public static int creeConsole(Connection con) throws SQLException {
         String nom = ConsoleFdB.entreeString("Nom : ");
         String prenom = ConsoleFdB.entreeString("Prenom : ");
@@ -136,7 +122,7 @@ public class Etudiant {
         return ListUtils.selectOne("choisissez un etudiant :",
                 tousLesEtudiants(con), (elem) -> elem.getNom());
     }
-    
+    */
     /**
      * @return the id
      */
@@ -152,19 +138,7 @@ public class Etudiant {
         return prenom;
     }
 
-    public String getClasse() {
-        return classe;
-    }
-
-    public int getAnnee() {
-        return annee;
-    }
-
-
-    public int getScore() {
-        return score;
-    }
-
+  
     public void setIne (int ine) {
         this.ine = ine;
     }
@@ -176,18 +150,5 @@ public class Etudiant {
     public void setPrenom(String prenom) {
         this.prenom = prenom;
     }
-
-    public void setClasse(String classe) {
-        this.classe = classe;
-    }
-
-  /**  public void setAnnee(int annee) {
-        this.annee = annee;
-    }
-*/    public void setScore(int score) {
-        this.score = score;
-    }
-    
-
-    
+  
 }

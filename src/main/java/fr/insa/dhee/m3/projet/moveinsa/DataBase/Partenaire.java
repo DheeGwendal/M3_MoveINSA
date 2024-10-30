@@ -24,4 +24,29 @@ package fr.insa.dhee.m3.projet.moveinsa.DataBase;
  */
 public class Partenaire {
     
+    private int IdPartenaire;
+    private String NomPartenaire;
+    
+    public Partenaire(int IdPartenaire, String NomPartenaire){
+        this.IdPartenaire = IdPartenaire;
+        this.NomPartenaire = NomPartenaire;
+    }
+
+    public int getIdPartenaire() {
+        return IdPartenaire;
+    }
+
+    public String getNomPartenaire() {
+        return NomPartenaire;
+    }
+
+    public void setIdPartenaire(int IdPartenaire) {
+        this.IdPartenaire = IdPartenaire;
+    }
+
+    public void setNomPartenaire(String NomPartenaire) {
+        this.NomPartenaire = NomPartenaire;
+    }
+    
+    
 }
