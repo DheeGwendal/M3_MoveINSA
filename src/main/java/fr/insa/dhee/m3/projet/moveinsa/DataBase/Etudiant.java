@@ -77,7 +77,7 @@ public class Etudiant {
      * @throws EntiteDejaSauvegardee si l'id de l'entité est différent de -1
      * @throws SQLException si autre problème avec la BdD
      */
-    public int saveInDB(Connection con) throws SQLException {
+/**    public int saveInDB(Connection con) throws SQLException {
         if (this.getIne() != -1) {
             throw new EntiteDejaSauvegardee();
         }
@@ -94,7 +94,7 @@ public class Etudiant {
             }
         }
     }
-
+*/
     public static List<Etudiant> tousLesEtudiants(Connection con) throws SQLException {
         try (PreparedStatement pst = con.prepareStatement(
                 "select ine,nom, prenom")) {
