@@ -18,9 +18,15 @@ along with CoursBeuvron.  If not, see <http://www.gnu.org/licenses/>.
  */
 package fr.insa.dhee.m3.projet.moveinsa.model;
 
+import com.vaadin.flow.component.page.AppShellConfigurator;
+import com.vaadin.flow.server.PWA;
+import com.vaadin.flow.theme.Theme;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 
 /**
  *
@@ -60,4 +66,23 @@ public class GestionBdD {
     public static void main (String[] args){
         debut();
     }
+    
+    @SpringBootApplication
+@PWA(name = "MoveINSA", shortName = "MoveINSA")
+@Theme("my-theme")
+public class Application extends SpringBootServletInitializer 
+        implements AppShellConfigurator {
+
+    public static void main(String[] args) {
+        SpringApplication.run(Application.class, args);
+        }
+    
+    }
+    
+    public static Connection defaultCon() throws SQLException {
+        return mysqlServeurPourM3();
+//        return h2InMemory("test");
+//        return h2InFile("bdd");
+    }
+    
 }

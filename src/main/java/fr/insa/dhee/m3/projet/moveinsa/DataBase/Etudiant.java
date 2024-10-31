@@ -94,6 +94,9 @@ public class Etudiant {
             }
         }
     }
+     * @param con
+     * @return 
+     * @throws java.sql.SQLException
 */
     public static List<Etudiant> tousLesEtudiants(Connection con) throws SQLException {
         try (PreparedStatement pst = con.prepareStatement(
