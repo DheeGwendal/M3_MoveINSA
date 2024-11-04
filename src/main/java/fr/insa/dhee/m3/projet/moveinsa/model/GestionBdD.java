@@ -67,21 +67,9 @@ public class GestionBdD {
         debut();
     }
     
-    @SpringBootApplication
-@PWA(name = "MoveINSA", shortName = "MoveINSA")
-@Theme("my-theme")
-public class Application extends SpringBootServletInitializer 
-        implements AppShellConfigurator {
-
-    public static void main(String[] args) {
-        SpringApplication.run(Application.class, args);
-        }
-    
-    }
     
     public static Connection defaultCon() throws SQLException {
         return mysqlServeurPourM3();
-
     }
     
 }
