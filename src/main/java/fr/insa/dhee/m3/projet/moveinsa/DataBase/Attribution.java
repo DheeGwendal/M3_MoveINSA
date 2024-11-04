@@ -25,3 +25,4 @@ package fr.insa.dhee.m3.projet.moveinsa.DataBase;
 public class Attribution {
     
 }
+/*test*/
