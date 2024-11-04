@@ -8,7 +8,7 @@
     <artifactId>M3_MoveINSA</artifactId>
     <name>M3_MoveINSA</name>
     <version>1.0-SNAPSHOT</version>
-    <packaging>jar</packaging>
+    <packaging>war</packaging>
 
     <properties>
         <java.version>19</java.version>
