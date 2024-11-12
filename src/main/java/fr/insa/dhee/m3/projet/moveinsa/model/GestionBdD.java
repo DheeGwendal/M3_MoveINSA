@@ -1,4 +1,5 @@
 /*
+TEST Arthur
 Copyright 2000- Francois de Bertrand de Beuvron
 
 This file is part of CoursBeuvron.
